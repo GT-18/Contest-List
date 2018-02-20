@@ -25,7 +25,7 @@ SECRET_KEY = 'dze0s^8n=f6l)s0*onzmj0w-fh2@2%#sf)7bqh=ui3x!_nm@ej'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'http://contests.pythonanywhere.com/']
+ALLOWED_HOSTS = [u'contests.pythonanywhere.com']
 
 
 # Application definition
