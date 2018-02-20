@@ -120,4 +120,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/home/contests/Contest-List/contests/static'
+STATIC_ROOT = '/home/contests/Contest-List/static'
