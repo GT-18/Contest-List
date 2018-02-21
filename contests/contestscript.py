@@ -24,7 +24,7 @@ Platforms = ['codeforces', 'codechef', 'hackerrank', 'hackerearth', 'atcoder', '
 Type_on_HE = ['Easy', 'Circuits'] 
 
 ### Type on TC
-Type_on_TC = ['Marathon', 'SRM']
+Type_on_TC = ['SRM']
 
 ### Check for a valid contest
 def check(contest):
