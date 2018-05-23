@@ -34,7 +34,11 @@ def create_contests():
 			continue
 		temp = Contest()
 		temp.duration = convert_time(contest['duration'])
-		temp.platform = get_object_or_404(Platform,link=contest['resource']['name'])
+		try:
+			temp.platform = Platform.objects.get(link=contest['resource']['name'])
+		except:
+			temp.platform = Platform.objects.get(name="Unknown")
+			print(contest['resource']['name'])
 		temp.event = ''.join([i if ord(i) < 128 else '' for i in contest['event']])
 		temp.start_time = datetime.strptime(contest['start'], '%Y-%m-%dT%H:%M:%S') + timedelta(minutes = 330)
 		temp.end_time = datetime.strptime(contest['end'], '%Y-%m-%dT%H:%M:%S') + timedelta(minutes = 330)
@@ -54,6 +58,11 @@ def home(request):
 			present_contest.append(i)
 		else:
 			past_contest.append(i)
+	past_contest.sort(key= lambda x:x.end_time)
+	past_contest.reverse()
+	present_contest.sort(key= lambda x:x.end_time)
+	future_contest.sort(key= lambda x:x.start_time)
+	future_contest.reverse()
 	return render(request, 'contests/home.html',{
 			'upcoming_contests':future_contest,
 			'ongoing_contests':present_contest,
