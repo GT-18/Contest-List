@@ -62,7 +62,7 @@ def home(request):
 	past_contest.reverse()
 	present_contest.sort(key= lambda x:x.end_time)
 	future_contest.sort(key= lambda x:x.start_time)
-	future_contest.reverse()
+#	future_contest.reverse()
 	return render(request, 'contests/home.html',{
 			'upcoming_contests':future_contest,
 			'ongoing_contests':present_contest,
