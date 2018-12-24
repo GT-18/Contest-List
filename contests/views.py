@@ -30,7 +30,10 @@ def convert_time(n):
 def create_contests():
 	contest_list = get_contests()
 	for contest in contest_list:
-		if Contest.objects.filter(event_link = contest['href'], event = ''.join([i if ord(i) < 128 else '' for i in contest['event']])).exists():
+		if Contest.objects.filter(event_link = contest['href'],event = ''.join([i if ord(i) < 128 else '' for i in contest['event']])).exists():
+			cur = Contest.objects.get(event_link = contest['href'],event = ''.join([i if ord(i) < 128 else '' for i in contest['event']]))
+			cur.start_time = datetime.strptime(contest['start'], '%Y-%m-%dT%H:%M:%S') + timedelta(minutes = 330)
+			cur.end_time = datetime.strptime(contest['end'], '%Y-%m-%dT%H:%M:%S') + timedelta(minutes = 330)
 			continue
 		temp = Contest()
 		temp.duration = convert_time(contest['duration'])
